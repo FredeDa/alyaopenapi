@@ -3,17 +3,19 @@ package fr.alya.alyaopenapi.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import fr.alya.alyaopenapi.model.Login;
-import fr.alya.alyaopenapi.services.JWTService;
+// import fr.alya.alyaopenapi.services.JWTService;
 
 
 @RestController
+@RequestMapping("/api")
 public class LoginController {
-
+    
     @GetMapping("/login")
     public String accept() {   
         return "login";
@@ -60,7 +62,10 @@ public class LoginController {
 
     }
     
-    
+ /*    @GetMapping("/testapi")
+    public String test() {   
+        return "test";
+    } */
 
 }
 
