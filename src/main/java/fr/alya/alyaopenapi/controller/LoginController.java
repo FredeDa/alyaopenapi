@@ -1,10 +1,11 @@
 package fr.alya.alyaopenapi.controller;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import fr.alya.alyaopenapi.model.Login;
 import fr.alya.alyaopenapi.services.JWTService;
@@ -26,7 +27,7 @@ public class LoginController {
    
     }
 
-    public JWTService jwtService;
+   /*  public JWTService jwtService;
 
     public LoginController (JWTService jwtService) {
         this.jwtService = jwtService;
@@ -36,6 +37,27 @@ public class LoginController {
     public String getToken(Authentication authentication) {
         String token = jwtService.generateToken(authentication);        
         return token;
+    } */
+
+    @PostMapping("/loginaxelor")
+    public String login(@RequestBody  Login login) {
+
+    WebClient.Builder builder = WebClient.builder();
+
+		String callback = builder.build()
+					.post()
+					.uri("http://localhost:8080/axelor/callback")
+                    .body(BodyInserters.fromValue(login))
+					.retrieve()
+					.bodyToMono(String.class)
+                    .block();
+		
+		System.out.println("------------------------------------------------");
+		System.out.println(callback);
+		System.out.println("------------------------------------------------");
+
+	return callback;
+
     }
     
     
