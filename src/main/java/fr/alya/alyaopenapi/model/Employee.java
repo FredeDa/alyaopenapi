@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/* Classe définissant les attribut  Employee */
 @Entity */
 public class Employee {
 /* 

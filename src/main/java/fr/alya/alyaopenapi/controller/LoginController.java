@@ -16,11 +16,13 @@ import fr.alya.alyaopenapi.model.Login;
 @RequestMapping("/api")
 public class LoginController {
     
+    /*API de test de type REST retournant le mot "login" */
     @GetMapping("/login")
     public String accept() {   
         return "login";
     }
 
+    /*API de test de type REST pour authentifier et retourner le login de l'utilisateur en cas de réussite. */
     @PostMapping("/authenticate")
     public String connexion(@RequestBody Login login) {
 
@@ -28,6 +30,8 @@ public class LoginController {
         return login.username;
    
     }
+
+    /* API d'authentification avec un Java Web Token  */
 
    /*  public JWTService jwtService;
 
@@ -40,6 +44,8 @@ public class LoginController {
         String token = jwtService.generateToken(authentication);        
         return token;
     } */
+
+    /*API authentifiant l'utilisateur sur l'application axelor installée en local */
 
     @PostMapping("/loginaxelor")
     public String login(@RequestBody  Login login) {

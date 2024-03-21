@@ -1,5 +1,6 @@
 package fr.alya.alyaopenapi.model;
 
+/* Classe d'objet pour l'authentification sur axelor en local */
 public class Credentials {
 
     private String username;
